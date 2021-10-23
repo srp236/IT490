@@ -4,6 +4,7 @@
 
 /* Base styling */
 
+
 body{
   background-color: white;
 }
@@ -25,4 +26,10 @@ body{
   color: white;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width:100%;
 }
