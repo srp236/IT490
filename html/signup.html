@@ -35,23 +35,20 @@
 <div class="container col-md-6">
     <h1>Register</h1>
     <hr>
-    <form class="row g-3">
+    <form>
         <div class="row g-3">
             <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="First name" aria-label="First name" required>
+                <input type="text" class="form-control" id="fname" placeholder="First name" aria-label="First name" required>
             </div>
             <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" required>
+                <input type="text" class="form-control" id="lname" placeholder="Last name" aria-label="Last name" required>
             </div>
             <div class="col-12">
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
             </div>
             <div class="col-12">
-               <!--<label for="inputPassword" style="text-align: left; color: grey; ">*Must include special characters</label>-->
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>
-            <div class="col-12">
-                <input type="password" class="form-control" id="inputPassword5" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <label style="color: grey;">*Must include special characters</label>
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Register</button>
@@ -62,12 +59,12 @@
 </body>>
 
 <!--Footer-->
-<footer class="text-center text-white footer" style="background-color: #7d9988;">
+<footer class="text-center text-white sticky-bottom container-fluid footer" style="background-color: #7d9988;">
     <!-- Grid container -->
-    <div class="container p-4"></div>
+    <div class="container p-4">
     <!--common links and other infromation accessible from all pages-->
     <p> © Copyright 2021: Best IT490 Group</p>
-
+  </div>
 </footer>
 
 </html>

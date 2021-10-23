@@ -4,5 +4,5 @@ function createToken(){
     sessionStorage.setItem("?")
 }
 
-sessionStorage.setItem('name','shy');
-console.log(sessionStorage.getItem('name'));
+sessionStorage.setItem('sessionId',$sessionID);
+console.log(sessionStorage.getItem('sessionId'));

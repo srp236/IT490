@@ -8,16 +8,22 @@
 body{
   background-color: white;
 }
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
 .input-fld{
   text-align: center;
 }
 #main-img {
 	width: 100%;
-    height: 60vh;
-    background: url('https://assets.epicurious.com/photos/59b7ec7c1387461e2e0d5789/16:9/w_2976,h_1674,c_limit/smallplates-hero-foreverloop.gif') top center;
-    background-size: cover;
-    position: relative;
+  height: 91vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../img/homeFood.gif') top center;
+  background-size: cover;
+  position: relative;
 }
+/*specific to Index page*/
 .text-block {
   position: absolute;
   bottom: 20px;
@@ -28,8 +34,39 @@ body{
   padding-right: 20px;
 }
 
+/*Forms and input styling*/
+
+/*Footer*/
 .footer{
   position: fixed;
   bottom: 0;
-  width:100%;
 }
+
+/*Navigation Bar*/
+a {
+  position: relative;
+  color: #7d9988;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7d9988;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #7d9988;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+a:hover::before {
+  transform: scaleX(1);
+}
+/*end of navbar*/
