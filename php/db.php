@@ -1,9 +1,9 @@
 <!--Database Login Credentials go here-->
 <?php
 
-//$servername = 
-//$username =
-//$password =
-//$dbname = 
+    $servername = "mysql";
+    $username = "md523";
+    $password = "password";
+    $dbname = "IT490";
 
 ?>

@@ -37,30 +37,30 @@
 <!--Register user account-->
 <div class="container col-md-6">
     <h1>Register</h1>
-    <hr>
-    <form action="../php/signup.php">
+    <hr/>
+    <form action="../php/signup.php" method="post">
         <div class="row g-3">
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="fname" placeholder="First name" aria-label="First name">
+            <div class="col-md-6 input-fld">
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" aria-label="First name">
             </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="lname" placeholder="Last name" aria-label="Last name">
+            <div class="col-md-6 input-fld">
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" aria-label="Last name">
             </div>
-            <div class="col-12">
+            <div class="col-12 input-fld">
               <input type="text" class="form-control" id="username" placeholder="Username">
             </div>
-            <div class="col-12">
+            <div class="col-12 input-fld">
                 <input type="email" class="form-control" id="email" placeholder="Email">
             </div>
-            <div class="col-12">
+            <div class="col-12 input-fld">
               <input type="password" class="form-control" id="password" placeholder="Password">
             </div>
-            <div class="col-12">
+            <div class="col-12 input-fld">
                 <input type="password" class="form-control" id="password" placeholder="Password">
                 <label style="color: grey;">*Must include special characters</label>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" id="submit" class="btn btn-primary">Register</button>
             </div>
         </div>
     </form>

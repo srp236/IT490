@@ -32,20 +32,45 @@
 
 <?php
 
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $username = $_POST['username'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  
+  require "db.php";
+
+  try 
+  {
+    $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+  } 
+  catch(PDOException $e) 
+  {
+    echo "Connection failed: " . $e->getMessage();
+  }
+  if(isset($_REQUEST['fname'])){
+    $name = $_REQUEST['fname']; 
+  }else{
+      $name = "<br>fname not set in POST Method<br>";
+  }
+  if(!isset($_POST['lname']))
+  {
+    $sad = "lname not set";
+  }
+
+  //$username = $_POST['username'];
+  //$email = $_POST['email'];
+  //$password = $_POST['password'];
 
 
-  $query = "INSERT INTO users(fname, lname, username, email, password, created) VALUES('$fname', '$lname', '$username', '$email', '$password', NOW())";
-  $statement = $conn->prepare($query);
-  $statement->execute();
-  echo '<script>
+  echo $name;
+  echo $sad;
+  //echo $fname;
+
+  //$query = "INSERT INTO users(fname, lname, username, email, password, created) VALUES('$fname', '$lname', '$username', '$email', '$password', NOW())";
+
+  /*echo '<script>
   document.getElementById("signup").innerHTML = "Signup Complete";
   </script>';
-  header("refresh:3; url=main.html");
-  exit();
+  header("refresh:9; url=../html/main.html");
+  exit();*/
 
 ?>
