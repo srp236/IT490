@@ -46,8 +46,8 @@
   {
     echo "Connection failed: " . $e->getMessage();
   }
-  if(isset($_REQUEST['fname'])){
-    $name = $_REQUEST['fname']; 
+  if(isset($_POST['fname'])){
+    $name = $_POST['fname']; 
   }else{
       $name = "<br>fname not set in POST Method<br>";
   }
