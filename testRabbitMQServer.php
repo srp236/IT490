@@ -8,27 +8,17 @@ require_once('login.php');
 function doLogin($username,$password)
 {
     //connect to database
+    //if connection is successful, lookup username in database and check password
+    //if password is invalid return false
     $login = new loginDB();
     return $login->validateLogin($username,$password);
-    //if the connect is successful, lookup username in database and check password
-
-    $login->validateLogin($username,$password);
-    return true;
-  
-    //if password is invalid return false
-    return false;
-
 }
 
 function doValidate($sessionId)
 {
   //validate the session ID by checking the database table
-  $username = $_POST['username'];
-  $query = "SELECT sessionID from token WHERE username = $username";
-  if(' ' == $sessionId)
-  {
-    return true;
-  }
+  $login = new loginDB();
+  return $login->validateSession($sessionID);  
 }
 
 function requestProcessor($request)
@@ -56,12 +46,3 @@ $server->process_requests('requestProcessor');
 echo "testRabbitMQServer END".PHP_EOL;
 exit();
 ?>
-
-
-
-
-
-
-
-
-

@@ -32,20 +32,6 @@
 
 <?php
 
-  
-  require "db.php";
-
-  try 
-  {
-    $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
-  } 
-  catch(PDOException $e) 
-  {
-    echo "Connection failed: " . $e->getMessage();
-  }
   if(isset($_POST['fname'])){
     $name = $_POST['fname']; 
   }else{
@@ -54,6 +40,7 @@
   if(!isset($_POST['lname']))
   {
     $sad = "lname not set";
+    echo $sad;
   }
 
   //$username = $_POST['username'];
@@ -62,7 +49,7 @@
 
 
   echo $name;
-  echo $sad;
+ // echo $sad;
   //echo $fname;
 
   //$query = "INSERT INTO users(fname, lname, username, email, password, created) VALUES('$fname', '$lname', '$username', '$email', '$password', NOW())";

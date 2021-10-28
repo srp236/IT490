@@ -35,5 +35,12 @@ public function validateLogin($username,$password)
 	}
 	return 0;//no users matched username
 }
+
+public function validateSession($sessionID)
+{
+    $sess = $this->logindb->real_escape_string($sessionID);
+    $statement = "SELECT * FROM userSess where sessID = '$sess'";
+    $response = $this->logindb->query($statement);
+}
 }
 ?>
