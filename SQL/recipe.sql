@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS recipe(
     preptime TIME,
     cooketime TIME,
     PRIMARY KEY(recipeID),
-    FOREIGN KEY(forcatID) REFERENCES FoodCat(foodcatID),
+    FOREIGN KEY(foodcatID) REFERENCES FoodCat(foodcatID),
 );
