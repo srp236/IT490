@@ -4,4 +4,5 @@ CREATE TABLE IF NOT EXISTS steps(
     stepNum INT, 
     stepDesc VARCHAR,
     PRIMARY KEY(stepID),
+    FOREIGN KEY(recipeID) REFERENCES recipe(recipeID),
 );
