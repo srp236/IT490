@@ -4,5 +4,8 @@ CREATE TABLE IF NOT EXIST quantity(
     ingredientsID INT,
     iMeasurementID INT,
     iQuantity float,
-    Primary Key(quantityID),
-    
+    PRIMARY KEY(quantityID),
+    FOREIGN KEY(recipeID) REFERENCES recipe(recipeID),
+    FOREIGN KEY(ingredientsID) REFERENCES ingredients(ingredientsID),
+    FOREIGN KEY(measureID) REFERENCES measurements(measureID),
+);
