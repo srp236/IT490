@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS measurements(
     measureID INT auto_increment, 
-    measureName VARCHAR,
-    Primary Key(measureID),
+    measureName VARCHAR(10),
+    Primary Key(measureID)
 );
