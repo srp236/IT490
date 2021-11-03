@@ -22,7 +22,7 @@
         function SendLoginRequest(username,password)
         {
             var request = new XMLHttpRequest();
-            request.open("POST","loginn.php",true);
+            request.open("POST","testRabbitMQServer.php",true);
             request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             request.onreadystatechange= function ()
             {
@@ -32,7 +32,10 @@
                     HandleLoginResponse(this.responseText);
                 }		
             }
+            console.log(username);
+            console.log(password);
             request.send("type=login&uname="+username+"&pword="+password);
+            
         }
     </script>
 </head>
@@ -76,7 +79,7 @@
   </form>
 </div>
 <script>
-    SendLoginRequest("kehoed","12345");
+    SendLoginRequest(username,"12345");
 </script>
 <div class="container p-1"></div>
 
