@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS forumscore(
    likes INT,
    recipes INT,
    PRIMARY KEY(forumid),
-   FOREIGN KEY(username) REFERENCES users(username)
+   FOREIGN KEY(username) REFERENCES users(username),
 );

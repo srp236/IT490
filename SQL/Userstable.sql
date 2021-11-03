@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS users(
-    --id             INT              auto_increment,
+    id             INT              auto_increment,
     fname          VARCHAR(60)      NOT NULL, 
     lname          VARCHAR(60)      NOT NULL,
     username       VARCHAR(60)      NOT NULL,
