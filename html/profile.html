@@ -17,40 +17,85 @@
 </head>
 
 <body class="example">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #7d9988;">
-    <div class="container-fluid">
-      <div class="logo" style="color: white">
-        <h1>
-          <i class="fas fa-seedling"></i>
-          レシピ
-        </h1>
+
+  <header>
+      <!-- Navigation-->
+    <nav class="navbar navbar-expand-md navbar-light p-3">
+      <div class="container-fluid">
+        <div class="logo" style="color:#7d9988">
+          <h1>
+            <i class="fas fa-seedling"></i>
+            レシピ
+          </h1>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="forum.html">Forum</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="whatsin.html">What's In My Fridge?</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="profile.html">Profile</a>
+            </li>
+            <!--make this a button?-->
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    </nav>
+    <!--end of nav-->
+
+  <!--Mini Nav Menu-->
+    <nav class="navbar navbar-expand-md navbar-light shadow border-bottom rounde" style="background-color: #7d9988;">
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link text-white" href="profile.html">User Preferences</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="cusRecipe.html">Create Recipe</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="save.html">Saved Recipes</a>
           </li>
         </ul>
       </div>
-    </div>
-  </nav>
-  <!--end of nav-->
+    </nav>
+  </header>
+
+<!----------------------------------------------------------------------------------------------->
 
   <!--User Profile-->
-  <div class="container main-text shadow p-3 mb-5 bg-white rounde col-md-8">
+  <div class="container p-4 col-lg shadow border-bottom rounder justify-content-start">
+    <h2>User Preferences</h2>
+    <div class="container p-4"></div>
 
-    <h2>Profile</h2>
-    <hr>
-    <div class="mb-3">
-    
+    <h3>Edit Password</h3>
+    <div class="container p-4"></div>
 
-    </div>
-    
+    <h3>Edit Email</h3>
+    <div class="container p-4"></div>
+
+    <h3>Email Notifications</h3>
+
+    <div class="container p-4"></div>
+
+
   </div>
+  
+
+  <div class="container p-4"></div>
+  
 </body>
 <footer class="text-center text-white sticky-bottom container-fluid" style="background-color: #7d9988;">
   <!-- Grid container -->
