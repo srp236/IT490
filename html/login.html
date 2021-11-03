@@ -22,7 +22,7 @@
         function SendLoginRequest(username,password)
         {
             var request = new XMLHttpRequest();
-            request.open("POST","testRabbitMQServer.php",true);
+            request.open("POST","../send.php",true);
             request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             request.onreadystatechange= function ()
             {
@@ -67,12 +67,12 @@
 <div class="container col-md-6">
   <h1>Sign In</h1>
   <hr>
-  <form action="../testRabbitMQServer.php">
+  <form>
       <div class="mb-3">
-        <input type="username" class="form-control" id="username" placeholder="Enter Username">
+        <input type="username" class="form-control" id="username" name="username" placeholder="Enter Username">
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" id="password" placeholder="Enter Password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
       </div>
       <a class="nav-link" href="">Forgot Password?</a>
       <button type="submit" class="btn btn-primary">Sign In</button>
