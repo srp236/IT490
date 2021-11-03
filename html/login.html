@@ -67,7 +67,7 @@
 <div class="container col-md-6">
   <h1>Sign In</h1>
   <hr>
-  <form action="../php/send.php">
+  <form action="../php/send.php" method="POST" >
       <div class="mb-3">
         <input type="username" class="form-control" id="username" name="username" placeholder="Enter Username">
       </div>
@@ -79,7 +79,7 @@
   </form>
 </div>
 <script>
-    SendLoginRequest(username,"12345");
+    SendLoginRequest(username,password);
 </script>
 <div class="container p-1"></div>
 

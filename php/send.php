@@ -1,11 +1,15 @@
 <?php
 
+header("Content-type: text/plain");
+
+$username = $_POST["username"];
+$password = $_POST["password"];
+
 
 echo ":: data received via GET ::\n\n";
-print_r($_POST["username"]);
-print_r($_POST["password"]);
 
-
+echo $username + "sned";
+echo $password + "sned";
 
 
 ?>
