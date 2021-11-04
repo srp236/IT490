@@ -37,6 +37,7 @@ function requestProcessor($request)
       return doValidate($request['sessionId']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
+  #return array("returnCode" => '0', 'message'=>$request['message']);
 }
 
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
