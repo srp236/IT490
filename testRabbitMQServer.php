@@ -3,7 +3,7 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
-require_once('login.php');
+require_once('login.php.inc');
 
 function doLogin($username,$password)
 {
