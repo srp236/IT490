@@ -22,7 +22,7 @@
         function SendLoginRequest(username,password)
         {
             var request = new XMLHttpRequest();
-            request.open("POST","login.php",true);
+            request.open("POST","../php/send.php",true);
             request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             request.onreadystatechange= function ()
             {
@@ -32,7 +32,10 @@
                     HandleLoginResponse(this.responseText);
                 }		
             }
+            console.log(username);
+            console.log(password);
             request.send("type=login&uname="+username+"&pword="+password);
+            
         }
     </script>
 </head>
@@ -64,19 +67,19 @@
 <div class="container col-md-6">
   <h1>Sign In</h1>
   <hr>
-  <form action="../testRabbitMQServer.php">
+  <form action="../php/send.php" method="POST" >
       <div class="mb-3">
-        <input type="username" class="form-control" id="username" placeholder="Enter Username">
+        <input type="username" class="form-control" id="username" name="username" placeholder="Enter Username">
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" id="password" placeholder="Enter Password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
       </div>
       <a class="nav-link" href="">Forgot Password?</a>
       <button type="submit" class="btn btn-primary">Sign In</button>
   </form>
 </div>
 <script>
-    SendLoginRequest("kehoed","12345");
+    SendLoginRequest(username,password);
 </script>
 <div class="container p-1"></div>
 

@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS recipe(
     recipeID INT auto_increment, 
     foodcatID INT, 
-    recipename VARCHAR,
-    recipedesc VARCHAR, 
+    recipename VARCHAR(48),
+    recipedesc VARCHAR(255), 
     preptime TIME,
     cooketime TIME,
     PRIMARY KEY(recipeID),
-    FOREIGN KEY(foodcatID) REFERENCES FoodCat(foodcatID),
+    FOREIGN KEY(foodcatID) REFERENCES foodcat(foodcatID)
 );

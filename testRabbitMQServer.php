@@ -3,7 +3,7 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
-require_once('login.php');
+require_once('login.php.inc');
 
 function doLogin($username,$password)
 {
@@ -37,6 +37,7 @@ function requestProcessor($request)
       return doValidate($request['sessionId']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
+  #return array("returnCode" => '0', 'message'=>$request['message']);
 }
 
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
