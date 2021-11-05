@@ -7,18 +7,11 @@ require_once('login.php.inc');
 
 function doLogin($username,$password)
 {
-    //connect to database
-    //if connection is successful, lookup username in database and check password
-    //if password is invalid return false
+    // lookup username in databas
+    // check password
     $login = new loginDB();
     return $login->validateLogin($username,$password);
-}
-
-function doValidate($sessionId)
-{
-  //validate the session ID by checking the database table
-  $login = new loginDB();
-  return $login->validateSession($sessionID);  
+    //return false if not valid
 }
 
 function requestProcessor($request)
@@ -37,13 +30,10 @@ function requestProcessor($request)
       return doValidate($request['sessionId']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
-  #return array("returnCode" => '0', 'message'=>$request['message']);
 }
 
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
 
-echo "testRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
-echo "testRabbitMQServer END".PHP_EOL;
 exit();
 ?>
