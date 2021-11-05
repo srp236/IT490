@@ -12,16 +12,21 @@
     <script src="../js/login.js"></script>
     <!--Send user input to login.php to validate the user login and sessionID-->
     <script>
+
         function HandleLoginResponse(response)
         {
             var text = JSON.parse(response);
-        //	document.getElementById("textResponse").innerHTML = response+"<p>";	
-            document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
+            alert(response);
+        	//document.getElementById("textResponse").innerHTML = response+"<p>";	
+        //  document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
         }
         
         function SendLoginRequest(username,password)
         {
             var request = new XMLHttpRequest();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
             request.open("POST","../php/send.php",true);
             request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             request.onreadystatechange= function ()
@@ -32,10 +37,7 @@
                     HandleLoginResponse(this.responseText);
                 }		
             }
-            console.log(username);
-            console.log(password);
-            request.send("type=login&uname="+username+"&pword="+password);
-            
+            request.send("type=login&username="+username+"&password="+password);
         }
     </script>
 </head>
@@ -67,7 +69,7 @@
 <div class="container col-md-6">
   <h1>Sign In</h1>
   <hr>
-  <form action="../php/send.php" method="POST" >
+  <form>
       <div class="mb-3">
         <input type="username" class="form-control" id="username" name="username" placeholder="Enter Username">
       </div>
