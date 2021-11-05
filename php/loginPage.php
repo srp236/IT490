@@ -54,7 +54,7 @@ if(isset($_POST["login"])){
 
     $dbPasswordHash = '';
     
-    
+
     
     if(password_verify($password, $dbPasswordHash)){
      echo "<br>You have succesfully logged in!<br>"; 
@@ -67,4 +67,50 @@ if(isset($_POST["login"])){
    echo "Validation issue found"; 
   }
 }
+  else
+		{
+		
+			$sql = "SELECT 
+						id,
+						username
+					FROM
+						Userstable
+					WHERE
+						username = '" . mysql_real_escape_string($_POST['username']) . "'
+					AND
+						password = '" . sha1($_POST['password']) . "'";
+						
+			$result = mysql_query($sql);
+			if(!$result)
+			{
+		
+				echo 'Something went wrong while signing in. Please try again.';
+			
+			}
+			else
+			{
+			
+				if(mysql_num_rows($result) == 0)
+				{
+					echo 'Invalid Password. Please try again.';
+				}
+				else
+				{
+					
+					$_SESSION['signed_in'] = true;
+					
+				
+					while($row = mysql_fetch_assoc($result))
+					{
+						$_SESSION['id'] 	= $row['id'];
+						$_SESSION['username'] 	= $row['username'];
+					}
+					
+					echo 'Welcome, ' . $_SESSION['username'];
+				}
+			}
+		}
+	
+
+
 ?>
