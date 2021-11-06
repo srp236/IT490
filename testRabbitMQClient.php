@@ -8,7 +8,6 @@ $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
 header("Content-Type:application/json");
 $data = json_decode(file_get_contents('php://input'), true);
-print_r($data);
 
 $request = array();
 $request['type'] = "login";
