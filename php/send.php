@@ -4,7 +4,7 @@ $login="trylog";
 $username="tryuse";
 $password="trypass";
 
-$url="http://www.recipe.com/IT490/testRabbitMQClient.php";
+$url="www.recipe.com/IT490/testRabbitMQClient.php";
  
 $data = array("type" => $login, "username" => $username, "password" => $password);
 $ch = curl_init($url);
@@ -20,7 +20,6 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 $result = curl_exec($ch);
 curl_close($ch);
 # Print response.
-echo json_encode($data);
+echo $payload;
 
-echo json_encode($result);
 ?>
