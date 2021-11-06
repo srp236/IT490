@@ -1,54 +1,36 @@
 <?php
 
-$url = "http://www.recipe.com/IT490/testRabbitMQClient.php";
-//$request = $_POST;
-$username = $_POST['username'];	
-$password = $_POST['password'];	
+function forwardRequest($url, $data) {
+    $result = [
+        'status' => NULL,
+        'last_url' => NULL,
+        'response' => NULL
+    ];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    $result['response'] = curl_exec($ch);
+    $result['status'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $result['last_url'] = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+    curl_close ($ch);
+    return $result;
+}
 
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    // Do the stuff you want to do on your own server here!
 
-$header = array(
-	"Content-Type: application/x-www-form-urlencoded",
-);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    $result = forwardRequest("http://www.recipe.com/testRabbitMQClient.php", $_POST);
 
-$data = $_POST;
-
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-
-//for debug only!
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-$resp = curl_exec($curl);
-curl_close($curl);
-//var_dump($resp);
-
-
-//params called here must refer to params in XHR send request
-// i.e when calling username must say uname
-// if (!isset($_POST))
-// {
-// 	$msg = "NO POST MESSAGE SET, POLITELY FUCK OFF";
-// 	echo json_encode($msg);
-// 	exit(0);
-// }
-// if (isset($_POST))
-// {
-// 	
-// $response = "unsupported request type, politely FUCK OFF";
-// switch ($request["username"])
-// {
-// 	case "shy":
-// 		$response = "user recieved";
-// 		// $response = "login, yeah we can do that";
-// 	break;
-// }
-echo json_encode($resp);
-exit(0);
+    if ($result['status'] === 200) {
+        header('Location: http://www.recipe.com/IT490/html/home.html');
+    } else {
+        header('Location: http://www.recipe.com/IT490/html/login.html');
+    }
+} else {
+    header('Location: http://www.recipe.com/IT490/html/index.html');
+}
 
 ?>

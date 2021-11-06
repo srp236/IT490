@@ -6,11 +6,14 @@ require_once('rabbitMQLib.inc');
 
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
+header("Content-Type:application/json");
+$data = json_decode(file_get_contents('php://input'), true);
+print_r($data);
 
 $request = array();
 $request['type'] = "login";
-$request['username'] = $argv[1];
-$request['password'] = $argv[2];
+$request['username'] = $data['username'];
+$request['password'] = $data['password'];
 $request['message'] = "HI";
 $response = $client->send_request($request);
 //$response = $client->publish($request);
