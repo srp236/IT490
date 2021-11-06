@@ -1,0 +1,3 @@
+curl -X POST http://www.recipe.com/IT494/testRabbitMQClient.php
+     -H "Content-Type: application/json" 
+     -d "{\"login\":\"my_login\",\"password\":\"my_password\"}"
