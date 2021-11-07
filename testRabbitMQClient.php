@@ -10,6 +10,10 @@ $request = array();
 $request['type'] = $_POST['type'];
 $request['username'] = $_POST['username'];
 $request['password'] = $_POST['password'];
+$request['email'] = $_POST['email'];
+$request['fname'] = $_POST['fname'];
+$request['password'] = $_POST['password'];
+
 $request['message'] = "HI";
 $response = $client->send_request($request);
 //$response = $client->publish($request);

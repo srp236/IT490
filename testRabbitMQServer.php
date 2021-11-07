@@ -14,6 +14,13 @@ function doLogin($username,$password)
     //return false if not valid
 }
 
+function doRegister($fname,$lname,$username,$email,$password)
+{
+  //input new info into db
+  $login = new loginDB();
+  return $login->registerUser($fname,$lname,$username,$email,$password);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;

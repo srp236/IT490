@@ -6,7 +6,7 @@ private $logindb;
 
 public function __construct()
 {
-	$this->logindb = new mysqli("127.0.0.1","root","12345","login");
+	$this->logindb = new mysqli("127.0.0.1","shy","pass","IT490");
 
 	if ($this->logindb->connect_errno != 0)
 	{
@@ -34,6 +34,26 @@ public function validateLogin($username,$password)
 		echo "passwords did not match for $username".PHP_EOL;
 	}
 	return 0;//no users matched username
+}
+
+public function registerUser($fname,$lname,$username,$email,$password)
+{
+	$fna = $this->logindb->real_escape_string($fname);
+	$lna = $this->logindb->real_escape_string($lname);
+	$un = $this->logindb->real_escape_string($username);
+	$ema = $this->logindb->real_escape_string($email);
+	$pass = $this->logindb->real_escape_string($password);
+	$statement = "insert into users(fname,lname,username,email,password) values($fna,$lna,$un,$ema,$pass);
+	$response = $this->logindb->query($statement);
+
+	echo "data inputed".PHP_EOL;
+	return 1;//successful
+}
+public function validateSession($sessionID)
+{
+    $sess = $this->logindb->real_escape_string($sessionID);
+    $statement = "SELECT * FROM userSess where sessID = '$sess'";
+    $response = $this->logindb->query($statement);
 }
 }
 ?>
