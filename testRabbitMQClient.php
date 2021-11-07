@@ -6,8 +6,7 @@ require_once('rabbitMQLib.inc');
 
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
-header("Content-Type:application/json");
-$data = json_decode(file_get_contents('php://input'));
+$data = $_POST;
 
 $request = array();
 $request['type'] = "login";
