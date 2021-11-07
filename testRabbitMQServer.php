@@ -33,6 +33,8 @@ function requestProcessor($request)
   {
     case "login":
       return doLogin($request['username'],$request['password']);
+    case "register":
+        return doRegister($request['fname'],$request['lname'],$request['username'],$request['email'],$request['password']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }

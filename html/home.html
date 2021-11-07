@@ -56,6 +56,16 @@
   <!--------------------------------------------------------------------------------------------------------------->
 
   <!--Home Page Info-->
+
+  <!--searchbar-->
+
+  <div class="container">
+    <form class="form-inline" method="post" action="search.php">
+      <input type="text" name="roll_no" class="form-control" placeholder="Search roll no..">
+      <button type="submit" name="save" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
   <div class="row container-fluid card-deck">
     <div class="col-sm-6">
       <div class="card">
@@ -75,15 +85,6 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">View Recipe</a>
-          </div>
-        </div>
-    </div>
   </div>
 
 </body>
@@ -92,7 +93,7 @@
 <!--Footer-->
 <footer class="text-center text-white sticky-bottom container-fluid footer" style="background-color: #7d9988;">
     <!-- Grid container -->
-    <div class="container p-4">
+    <div class="container p-3">
     <!--common links and other infromation accessible from all pages-->
     <p> © Copyright 2021: Best IT490 Group</p>
   </div>

@@ -12,6 +12,7 @@ $request['username'] = $_POST['username'];
 $request['password'] = $_POST['password'];
 $request['email'] = $_POST['email'];
 $request['fname'] = $_POST['fname'];
+$request['lname'] = $_POST['lname'];
 $request['password'] = $_POST['password'];
 
 $request['message'] = "HI";
@@ -24,3 +25,4 @@ print_r($response);
 echo "\n\n";
 
 echo $argv[0]." END".PHP_EOL;
+?>
