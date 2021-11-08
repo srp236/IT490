@@ -1,4 +1,4 @@
-$dbms = 'phpbb\\db\\driver\\mysql';
+$dbms = 'phpbb\\db\\driver\\mysqli';
 $dbhost = '172.29.245.74';
 $dbport = 'database port if not default';
 $dbname = 'IT490';
