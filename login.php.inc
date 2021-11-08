@@ -55,15 +55,15 @@ public function searchItem($search)
 	$ser = $this->logindb->real_escape_string($search);
 }
 
-public function addRecipe($image,$dishname,$ptime,$ctime,$ingred,$instruc)
+public function addRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
 {
-	$img = $this->logindb->real_escape_string($image);
+	#$img = $this->logindb->real_escape_string($image);
 	$dname = $this->logindb->real_escape_string($dishname);
 	$pt = $this->logindb->real_escape_string($ptime);
 	$ct = $this->logindb->real_escape_string($ctime);
 	$ingr = $this->logindb->real_escape_string($ingred);
 	$instr = $this->logindb->real_escape_string($instruc);
-	$statement = "insert into recipe(fname,lname,username,email,password) values('$img','$dname','$pt','$ct','$ingr','$instr')";
+	$statement = "insert into recipe(dishname,ptime,ctime,ingred,instruc) values('$dname','$pt','$ct','$ingr','$instr')";
 	$response = $this->logindb->query($statement);
 
 	echo "data inputed".PHP_EOL;
