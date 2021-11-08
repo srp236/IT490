@@ -15,10 +15,13 @@
 
         function HandleRegisterResponse(response)
         {
-            var text = JSON.parse(response);
-            alert(response);
-        	//document.getElementById("textResponse").innerHTML = response+"<p>";	
-        //  document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
+            var res = response;
+            var logGood = 'Account Created! Plese Login';
+            if (res == '1')
+            {
+            	alert(logGood);            	
+            	location.href = 'login.html';
+            }
         }
         
         function SendRegisterRequest(fname,lname,username,email,password)
