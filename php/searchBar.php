@@ -1,8 +1,25 @@
-
 <?php
 
 
-include "connection.php";
+//include "connect.php";
+
+function OpenCon()
+{
+$servername = "mysql";
+$username = "md523";
+$password = "password";
+$dbname = "IT490";
+
+//this creates the connection
+$conn = mysqli_connect($mysql, $username, $password, $dbname) or die("Connect failed: %s/m". -> error);
+
+return $conn;
+}
+
+function CloseCon($conn)
+{
+    $conn -> close();
+}
 
 $api_url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata'
 $json_data = file_get_contents($api_url);
@@ -10,6 +27,9 @@ $response_data = json_decode($json_data);
 
 // All user data exists in 'data' object
 $user_data = $response_data->data;
+
+//this is used if we want to have only 10 records shown
+//$user_data = array_slice($user_data, 0, 9);
 
 
 // debugging
