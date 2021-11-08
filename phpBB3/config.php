@@ -1,7 +1,7 @@
 $dbms = 'phpbb\\db\\driver\\mysql';
-$dbhost = 172.29.245.74;
+$dbhost = '172.29.245.74';
 $dbport = 'database port if not default';
-$dbname = IT490;
+$dbname = 'IT490';
 $dbuser = 'shy';
 $dbpasswd = 'pass';
 $table_prefix = 'phbb_';
