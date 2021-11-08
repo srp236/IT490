@@ -30,10 +30,10 @@ function doSearch($search)
     //return false if not valid
 }
 
-function doRecipe($image,$dishname,$ptime,$ctime,$ingred,$instruc)
+function doRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
 {
   $login = new loginDB();
-  return $login->addRecipe($image,$dishname,$ptime,$ctime,$ingred,$instruc);
+  return $login->addRecipe($dishname,$ptime,$ctime,$ingred,$instruc);
 }
 
 function requestProcessor($request)
@@ -53,7 +53,7 @@ function requestProcessor($request)
     case "search":
       return doSearch($request['search']);
     case "recipe":
-      return doRecipe($request['image'],$request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
+      return doRecipe($request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }

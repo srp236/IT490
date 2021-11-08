@@ -27,7 +27,7 @@
       function SendRecipeRequest(image,dishname,ptime,ctime,ingred,instruc)
       {
           var request = new XMLHttpRequest();
-          var image = document.getElementById("image").value;
+          //var image = document.getElementById("image").value;
           var dishname = document.getElementById("dishname").value;
           var ptime = document.getElementById("ptime").value;
           var ctime = document.getElementById("ctime").value;
@@ -44,7 +44,7 @@
                   HandleLoginResponse(this.responseText);
               }		
           }
-          request.send("type=recipe&image="+image+"&dishname="+dishname+"&ptime="+ptime+"&ctime="+ctime+"&ingred="+ingred+"&instruc="+instruc);
+          request.send("type=recipe&dishname="+dishname+"&ptime="+ptime+"&ctime="+ctime+"&ingred="+ingred+"&instruc="+instruc);
       }
   </script>
 </head>
@@ -109,12 +109,12 @@
     <h1>Build Recipe</h1>
     <P style="color: grey;">Enter the details of your own custom recipe</P>
 
-    <form action="../php/signup.php" method="post">
+    <forms>
         <div class="row">
 
-          <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+         <!-- <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
           <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-          <p><img id="output" width="200" height="200"/></p>
+          <p><img id="output" width="200" height="200"/></p>-->
 
           <div class="col-12 form-outline">
             <label class="form-label" for="dishname">Enter the Name of Your Dish</label>
