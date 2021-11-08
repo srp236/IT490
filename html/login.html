@@ -14,8 +14,19 @@
 
         function HandleLoginResponse(response)
         {
-            //var text = JSON.parse(response);
-            alert(response);
+            var res = response;
+            var logGood = 'Login Success!';
+            var logBad = 'Login Fail, Please try again';
+            if (res == '1')
+            {
+            	alert(logGood);            	
+            	location.href = 'home.html';
+            }
+            else{
+	            alert(logBad);
+	            location.href = 'login.html'; 
+            }
+
         }
         
         function SendLoginRequest(username,password)
