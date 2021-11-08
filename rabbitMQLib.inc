@@ -201,19 +201,15 @@ class rabbitMQClient
 			$params['password'] = $this->PASSWORD;
 			$params['vhost'] = $this->VHOST;
 
-			//make new connection
 			$conn = new AMQPConnection($params);
 			$conn->connect();
 
-			//make new channel
 			$channel = new AMQPChannel($conn);
 
-			//make new exchange
 			$exchange = new AMQPExchange($channel);
 			$exchange->setName($this->exchange);
 			$exchange->setType($this->exchange_type);
 
-			//bind queue and exchange
 			$callback_queue = new AMQPQueue($channel);
 			$callback_queue->setName($this->queue."_response");
 			$callback_queue->declare();
@@ -235,7 +231,6 @@ class rabbitMQClient
 		{
 			die("failed to send message to exchange: ". $e->getMessage()."\n");
 		}
-		requestProcessor($message);
 	}
 
 	/**
