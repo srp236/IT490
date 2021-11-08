@@ -43,7 +43,7 @@ public function registerUser($fname,$lname,$username,$email,$password)
 	$un = $this->logindb->real_escape_string($username);
 	$ema = $this->logindb->real_escape_string($email);
 	$pass = $this->logindb->real_escape_string($password);
-	$statement = "insert into users(fname,lname,username,email,password) values($fna,$lna,$un,$ema,$pass);
+	$statement = "insert into users(fname,lname,username,email,password) values($fna,$lna,$un,$ema,$pass)";
 	$response = $this->logindb->query($statement);
 
 	echo "data inputed".PHP_EOL;
