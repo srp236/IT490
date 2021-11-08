@@ -30,6 +30,12 @@ function doSearch($search)
     //return false if not valid
 }
 
+function doRecipe($image,$dishname,$ptime,$ctime,$ingred,$instruc)
+{
+  $login = new loginDB();
+  return $login->addRecipe($image,$dishname,$ptime,$ctime,$ingred,$instruc);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -46,6 +52,8 @@ function requestProcessor($request)
         return doRegister($request['fname'],$request['lname'],$request['username'],$request['email'],$request['password']);
     case "search":
       return doSearch($request['search']);
+    case "recipe":
+      return doRecipe($request['image'],$request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }

@@ -13,10 +13,40 @@
     <!--Script-->  
     <script src="https://kit.fontawesome.com/91a4f97be8.js" crossorigin="anonymous"></script>
     <script>
-        //testing session storgae functions
-        //sessionStorage.setItem('name','shy');
-        //console.log(sessionStorage.getItem('name'));
-    </script>
+
+      function HandleLoginResponse(response)
+      {
+          var res = response;
+          var logGood = 'Recipe Added';
+          if (res == '1')
+          {
+            alert(logGood);            	
+            location.href = 'save.html';
+          }
+      }
+      function SendRecipeRequest(image,dishname,ptime,ctime,ingred,instruc)
+      {
+          var request = new XMLHttpRequest();
+          var image = document.getElementById("image").value;
+          var dishname = document.getElementById("dishname").value;
+          var ptime = document.getElementById("ptime").value;
+          var ctime = document.getElementById("ctime").value;
+          var ingred = document.getElementById("ingred").value;
+          var instruc = document.getElementById("instruc").value;
+
+          request.open("POST","../testRabbitMQClient.php",true);
+          request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+          request.onreadystatechange = function ()
+          {
+              
+              if ((this.readyState == 4)&&(this.status == 200))
+              {
+                  HandleLoginResponse(this.responseText);
+              }		
+          }
+          request.send("type=recipe&image="+image+"&dishname="+dishname+"&ptime="+ptime+"&ctime="+ctime+"&ingred="+ingred+"&instruc="+instruc);
+      }
+  </script>
 </head>
 <body>
   <header>
@@ -109,7 +139,7 @@
             <textarea class="form-control" id="instruc" rows="4"></textarea>
           </div>
           <div class="col-12 g-3">
-              <button type="submit" id="submit" class="btn btn-primary">Save</button>
+              <button type="button" id="submit" class="btn btn-primary" onclick="SendRecipeRequest()">Save</button>
           </div>
         </div>
     </form>
