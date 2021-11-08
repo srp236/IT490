@@ -13,8 +13,6 @@ $request['password'] = $_POST['password'];
 $request['email'] = $_POST['email'];
 $request['fname'] = $_POST['fname'];
 $request['lname'] = $_POST['lname'];
-$request['password'] = $_POST['password'];
-
 $request['message'] = "HI";
 $response = $client->send_request($request);
 //$response = $client->publish($request);

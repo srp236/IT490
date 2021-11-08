@@ -25,7 +25,7 @@
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
-            request.open("POST","../testRabbitMQClient.php",true);
+            request.open("POST","../php/login.php",true);
             request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             request.onreadystatechange = function ()
             {
