@@ -231,6 +231,7 @@ class rabbitMQClient
 		{
 			die("failed to send message to exchange: ". $e->getMessage()."\n");
 		}
+
 	}
 
 	/**
