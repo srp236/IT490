@@ -13,8 +13,7 @@ $request['email'] = $_POST['email'];
 $request['fname'] = $_POST['fname'];
 $request['lname'] = $_POST['lname'];
 $request['message'] = "HI";
-//food
-$request['image'] = $_POST['image'];
+#$request['image'] = $_POST['image'];
 $request['dishname'] = $_POST['dishname'];
 $request['ptime'] = $_POST['ptime'];
 $request['ctime'] = $_POST['ctime'];
