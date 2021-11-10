@@ -21,6 +21,21 @@ function doRegister($fname,$lname,$username,$email,$password)
   return $login->registerUser($fname,$lname,$username,$email,$password);
 }
 
+function doSearch($search)
+{
+    // lookup username in databas
+    // check password
+    $login = new loginDB();
+    return $login->searchItem($search);
+    //return false if not valid
+}
+
+function doRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
+{
+  $login = new loginDB();
+  return $login->addRecipe($dishname,$ptime,$ctime,$ingred,$instruc);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -35,6 +50,10 @@ function requestProcessor($request)
       return doLogin($request['username'],$request['password']);
     case "register":
         return doRegister($request['fname'],$request['lname'],$request['username'],$request['email'],$request['password']);
+    case "search":
+      return doSearch($request['search']);
+    case "recipe":
+      return doRecipe($request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }

@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 require_once('path.inc');
 require_once('get_host_info.inc');
@@ -13,16 +12,19 @@ $request['password'] = $_POST['password'];
 $request['email'] = $_POST['email'];
 $request['fname'] = $_POST['fname'];
 $request['lname'] = $_POST['lname'];
-$request['password'] = $_POST['password'];
-
 $request['message'] = "HI";
+#$request['image'] = $_POST['image'];
+$request['dishname'] = $_POST['dishname'];
+$request['ptime'] = $_POST['ptime'];
+$request['ctime'] = $_POST['ctime'];
+$request['ingred'] = $_POST['ingred'];
+$request['instruc'] = $_POST['instruc'];
+
 $response = $client->send_request($request);
 //$response = $client->publish($request);
 
-echo json_encode($request);
-echo "client received response: ".PHP_EOL;
+#echo "client received response:".PHP_EOL;
 print_r($response);
-echo "\n\n";
-
-echo $argv[0]." END".PHP_EOL;
+#echo "\n\n";
+#echo $argv[0]." END".PHP_EOL;
 ?>
