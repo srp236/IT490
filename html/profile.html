@@ -18,7 +18,9 @@
     {
         var res = response;
         var text = JSON.parse(response);
-        document.getElementById("textResponse").innerHTML = response+"<p>";	
+        document.getElementById("textfname").innerHTML = text.fname+"<p>";	
+        document.getElementById("textlname").innerHTML = text.lname+"<p>";	
+        document.getElementById("textEmail").innerHTML = text.email+"<p>";	
         //document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
 
     }
@@ -109,10 +111,11 @@
 
   <!--User Profile-->
   <div class="container p-4 col-lg shadow border-bottom rounder justify-content-start">
-    <h2>User Information</h2>
+    <h4>User Information</h4>
     <form>
-      <h1 id="textResponse">Name: </h1>
-      <h1>Email: </h1>
+      <p id="textFame">Name: </p>
+      <p id="textLame"></p>
+      <p id="textEmail">Email: </p>
     </form>>
 
     <h4>User Preferences</h4>
