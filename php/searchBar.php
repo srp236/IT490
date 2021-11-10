@@ -71,9 +71,9 @@ table, th, td {
 <body>
 <table>
 <tr>
-<td>Name</td>
-<td>Email</td>
-<td>Roll No</td>
+<td>RecipeID</td>
+<td>RecipeName</td>
+<td>Ingredients</td>
 
 </tr>
 <?php
@@ -81,16 +81,16 @@ $i=0;
 while($row = mysqli_fetch_array($RecipeAPI)) {
 ?>
 <tr>
-<td><?php echo $row["RecipeID"]; ?></td>
-<td><?php echo $row["RecipeName"]; ?></td>
-<td><?php echo $row["Ingredients"]; ?></td>
+    <td><?php echo $row["RecipeID"]; ?></td>
+    <td><?php echo $row["RecipeName"]; ?></td>
+    <td><?php echo $row["Ingredients"]; ?></td>
 </tr>
 <?php
-$i++;
+    $i++;
 }
 ?>
-</table>
-</body>
+    </table>
+        </body>
 </html>
 
 
