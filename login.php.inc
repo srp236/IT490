@@ -50,6 +50,13 @@ public function registerUser($fname,$lname,$username,$email,$password)
 	return 1;//successful
 }
 
+public function getInfo()
+{
+	$statement = "select * from users";
+	$response = $this->logindb->query($statement);
+	return $response;
+}
+
 public function searchItem($search)
 {
 	$ser = $this->logindb->real_escape_string($search);

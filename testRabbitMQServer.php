@@ -21,6 +21,12 @@ function doRegister($fname,$lname,$username,$email,$password)
   return $login->registerUser($fname,$lname,$username,$email,$password);
 }
 
+function doGetUserInfo()
+{
+  $login = new loginDB();
+  return $login->getInfo();
+}
+
 function doSearch($search)
 {
     // lookup username in databas
@@ -48,8 +54,10 @@ function requestProcessor($request)
   {
     case "login":
       return doLogin($request['username'],$request['password']);
-    case "register":
+      case "register":
         return doRegister($request['fname'],$request['lname'],$request['username'],$request['email'],$request['password']);
+    case "getUserInfo":
+      return doGetInfo();
     case "search":
       return doSearch($request['search']);
     case "recipe":

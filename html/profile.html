@@ -18,7 +18,7 @@
     {
         var res = response;
         var text = JSON.parse(response);
-        document.getElementById("textfname").innerHTML = text.fname+"<p>";	
+        document.getElementById("textfname").innerHTML = text.fname;	
         document.getElementById("textlname").innerHTML = text.lname+"<p>";	
         document.getElementById("textEmail").innerHTML = text.email+"<p>";	
         //document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
@@ -116,7 +116,7 @@
       <p id="textFame">Name: </p>
       <p id="textLame"></p>
       <p id="textEmail">Email: </p>
-    </form>>
+    </form>
 
     <h4>User Preferences</h4>
     <div class="container p-4"></div>
