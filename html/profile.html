@@ -14,26 +14,19 @@
   <script src="https://kit.fontawesome.com/91a4f97be8.js" crossorigin="anonymous"></script>
   <script>
 
-    function HandleLoginResponse(response)
+    function HandleProfileResponse(response)
     {
-        var res = response;
-        var text = JSON.parse(res);
-        console.log(text);
-        alert(text.email);
-       // alert(text[0]);
-       // var text = JSON.parse(res);
-        //alert(text[0]);
-        //var text = JSON.parse(res);
-        //echo res;
-       // alert(res);
-        //document.getElementById("fname").innerHTML = res[fname];	
-	document.getElementById("name").innerHTML = text.fname +" "+text.lname;	
-	document.getElementById("email").innerHTML = text.email;	
-        //document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
+      var res = response;
+      var text = JSON.parse(res);
 
+      console.log(text);
+      alert(text.email);
+
+      document.getElementById("name").innerHTML = text.fname +" "+text.lname;	
+      document.getElementById("email").innerHTML = text.email;	
     }
     
-    function SendLoginRequest()
+    function SendProfileRequest()
     {
         var request = new XMLHttpRequest();
         
@@ -44,7 +37,7 @@
             
             if ((this.readyState == 4)&&(this.status == 200))
             {
-                HandleLoginResponse(this.responseText);
+                HandleProfileResponse(this.responseText);
             }		
         }
         request.send("type=getUserInfo&username=shy");
@@ -52,7 +45,7 @@
 </script>  
 </head>
 
-<body class="example" onload="SendLoginRequest()">
+<body class="example" onload="SendProfileRequest()">
 
   <header>
       <!-- Navigation-->
@@ -138,13 +131,10 @@
 
     <div class="container p-4"></div>
     <hr>
-
   </div>
-  
-
   <div class="container p-4"></div>
-  
 </body>
+
 <footer class="text-center text-white sticky-bottom container-fluid" style="background-color: #7d9988;">
   <!-- Grid container -->
   <div class="container p-4">

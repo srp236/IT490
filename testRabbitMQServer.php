@@ -7,41 +7,54 @@ require_once('login.php.inc');
 
 function doLogin($username,$password)
 {
-    // lookup username in databas
-    // check password
-    $login = new loginDB();
-    return $login->validateLogin($username,$password);
-    //return false if not valid
+  // lookup username in databas
+  // check password
+  $login = new loginDB();
+  return $login->validateLogin($username,$password);
+  //return false if not valid
 }
-
+/*******************************************/
 function doRegister($fname,$lname,$username,$email,$password)
 {
   //input new info into db
   $login = new loginDB();
   return $login->registerUser($fname,$lname,$username,$email,$password);
 }
-
+/*******************************************/
 function doGetInfo($username)
 {
   $login = new loginDB();
   return $login->getInfo($username);
 }
-
+/*******************************************/
 function doSearch($search)
 {
-    // lookup username in databas
-    // check password
-    $login = new loginDB();
-    return $login->searchItem($search);
-    //return false if not valid
+  $login = new loginDB();
+  return $login->searchItem($search);
 }
-
+/*******************************************/
 function doRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
 {
   $login = new loginDB();
   return $login->addRecipe($dishname,$ptime,$ctime,$ingred,$instruc);
 }
+/*******************************************/
+function doValidate($sessionID,$username)
+{
+  // lookup session ID in databse
+  // check if it mastches with sessid in storage
+  $login = new loginDB();
+  return $login->validateSession($sessionID,$username);
+  //return false if not valid
+}
+/*******************************************/
 
+function doSessGet($username)
+{
+  $login = new loginDB();
+  return $login->getSessID($username);
+}
+/*******************************************/
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -64,6 +77,8 @@ function requestProcessor($request)
       return doRecipe($request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
     case "validate_session":
       return doValidate($request['sessionId']);
+    case "getSess":
+      return doSessGet($request['username']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

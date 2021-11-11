@@ -13,10 +13,41 @@
   <link rel="shortcut icon" href="../img/seedling-solid.svg"/>
 
   <!--Script-->  
+  <script>
+    console.log(sessionStorage.getItem('username'));
+    username = sessionStorage.getItem('username');
+  </script>
   <script src="https://kit.fontawesome.com/91a4f97be8.js" crossorigin="anonymous"></script>
+  <script>
+
+    function HandleSessResponse(response)
+    {
+      var res = response;
+      var text = JSON.parse(res);
+
+      console.log(text.output);
+    }
+    
+    function SendSessRequest()
+    {
+        var request = new XMLHttpRequest();
+        
+        request.open("POST","../testRabbitMQClient.php",true);
+        request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        request.onreadystatechange = function ()
+        {
+            
+            if ((this.readyState == 4)&&(this.status == 200))
+            {
+                HandleSessResponse(this.responseText);
+            }		
+        }
+        request.send("type=getSess&username="+username);
+    }
+</script>
 </head>
 
-<body>
+<body onload="SendSessRequest()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-md navbar-light sticky-top shadow p-3 mb-5 bg-white rounde">
     <div class="container-fluid">

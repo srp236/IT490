@@ -15,18 +15,21 @@
         function HandleLoginResponse(response)
         {
             var res = response;
-            var logGood = 'Login Success!';
-            var logBad = 'Login Fail, Please try again';
-            if (res == '1')
-            {
-            	alert(logGood);            	
-            	location.href = 'home.html';
-            }
-            else{
-	            alert(logBad);
-	            location.href = 'login.html'; 
-            }
+            var text = JSON.parse(res);
+            console.log(text);
 
+            if (text.output == 1)
+            {
+                alert(text.message);
+                location.href = 'home.html';
+                sessionStorage.setItem('username',text.username);
+                console.log(sessionStorage.getItem('username'));
+            }
+            else
+            {
+                alert(text.message);
+                location.href = 'login.html';
+            }
         }
         
         function SendLoginRequest(username,password)

@@ -29,11 +29,13 @@ public function validateLogin($username,$password)
 		if ($row["password"] == $pw)
 		{
 			echo "passwords match for $username".PHP_EOL;
-			return 1;// password match
+			$result = array("output"=>"1","message"=>"Login Success!");
+			return $result;
 		}
 		echo "passwords did not match for $username".PHP_EOL;
 	}
-	return 0;//no users matched username
+	$result = array("output"=>"0","message"=>"Login Fail, Please try again","username"=>$un);
+	return $result;//no users matched username
 }
 
 public function registerUser($fname,$lname,$username,$email,$password)
@@ -47,7 +49,8 @@ public function registerUser($fname,$lname,$username,$email,$password)
 	$response = $this->logindb->query($statement);
 
 	echo "data inputed".PHP_EOL;
-	return 1;//successful
+	$result = array("output"=>"Registration Successful!")
+	return $result;
 }
 
 public function getInfo($username)
@@ -83,14 +86,42 @@ public function addRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
 	$response = $this->logindb->query($statement);
 
 	echo "data inputed".PHP_EOL;
-	return 1;//successful
+	$result = array("output"=>"Recipe Added");
+	return $result;
 }
 
-public function validateSession($sessionID)
+public function validateSession($sessionID,$username)
 {
     $sess = $this->logindb->real_escape_string($sessionID);
-    $statement = "SELECT * FROM userSess where sessID = '$sess'";
+    $un = $this->logindb->real_escape_string($username);
+    $statement = "SELECT sessID FROM userSess where username = '$un'";
     $response = $this->logindb->query($statement);
+	while ($row = $response->fetch_assoc())
+	{
+		echo "checking for session id".PHP_EOL;
+		if ($row[sessID] == $sess)
+		{
+			echo "session ID is valid".PHP_EOL;
+			$result = array("output"=>"1","message"=>"session ID is valid");
+			return $result;
+		}
+		echo "invalid session ID".PHP_EOL;
+	}
+	$result = array("output"=>"0", "message"=>"Error: Session Timed Out. Please Login again.");
+	return $result;
+}
+public function getSessID($username)
+{
+	$un = $this->logindb->real_escape_string($username);
+    $statement = "insert into userSess(sessID,username,logTime) values (MD5(RAND()),'$un',current_time())";
+	$response = $this->logindb->query($statement);
+	while ($row = $response->fetch_assoc())
+	{
+		$sessID = $row["sessID"];
+		echo "$sessID"
+	}
+	$result = array("output"=>$sessID);
+	return $result;
 }
 }
 ?>
