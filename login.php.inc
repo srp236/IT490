@@ -49,7 +49,7 @@ public function registerUser($fname,$lname,$username,$email,$password)
 	$response = $this->logindb->query($statement);
 
 	echo "data inputed".PHP_EOL;
-	$result = array("output"=>"Registration Successful!")
+	$result = array("output"=>"1","message"=>"Registration Successful!");
 	return $result;
 }
 
@@ -115,10 +115,10 @@ public function getSessID($username)
 	$un = $this->logindb->real_escape_string($username);
     $statement = "insert into userSess(sessID,username,logTime) values (MD5(RAND()),'$un',current_time())";
 	$response = $this->logindb->query($statement);
-	while ($row = $response->fetch_assoc())
+	if (sessID == $statement)
 	{
 		$sessID = $row["sessID"];
-		echo "$sessID"
+		echo "$sessID";
 	}
 	$result = array("output"=>$sessID);
 	return $result;

@@ -1,7 +1,3 @@
----------------------
---Table structure for `users`
----------------------
-
 USE `IT490`;
 
 DROP TABLE IF EXISTS `users`;
@@ -20,16 +16,3 @@ CREATE TABLE `users` (
     UNIQUE (`email`)
 );
 
----------------------
---Table structure for `userSess`
----------------------
-DROP TABLE IF EXISTS `userSess`;
-
-CREATE TABLE `userSess` (
-    `sessID`          CHAR(32)         NOT NUll,
-    `username`        VARCHAR(20)      NOT NUll,
-    `logTime`         time             NOT NULL
-    FOREIGN KEY(`username`) REFERENCES `users`(`username`),
-    PRIMARY KEY(`username`),
-    UNIQUE(`sessID`)
-);
