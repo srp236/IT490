@@ -29,7 +29,7 @@ public function validateLogin($username,$password)
 		if ($row["password"] == $pw)
 		{
 			echo "passwords match for $username".PHP_EOL;
-			$result = array("output"=>"1","message"=>"Login Success!");
+			$result = array("output"=>"1","message"=>"Login Success!","username"=>$un);
 			return $result;
 		}
 		echo "passwords did not match for $username".PHP_EOL;
@@ -113,14 +113,15 @@ public function validateSession($sessionID,$username)
 public function getSessID($username)
 {
 	$un = $this->logindb->real_escape_string($username);
-    $statement = "insert into userSess(sessID,username,logTime) values (MD5(RAND()),'$un',current_time())";
+   	$statement = "insert into userSess(sessID,username,logTime) values (MD5(RAND()),'$un',current_time())";
 	$response = $this->logindb->query($statement);
-	if (sessID == $statement)
+	$stat = "select sessID from userSess where username = '$un'";
+	$respo = $this->logindb->query($stat);
+	while ($row = $respo->fetch_assoc())
 	{
 		$sessID = $row["sessID"];
-		echo "$sessID";
 	}
-	$result = array("output"=>$sessID);
+	$result = array("sessID"=>$sessID);
 	return $result;
 }
 }
