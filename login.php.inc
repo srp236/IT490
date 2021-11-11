@@ -50,11 +50,20 @@ public function registerUser($fname,$lname,$username,$email,$password)
 	return 1;//successful
 }
 
-public function getInfo()
-{
-	$statement = "select * from users";
+public function getInfo($username)
+{	$un = $this->logindb->real_escape_string($username);
+	$statement = "select * from users where username = '$un'";
 	$response = $this->logindb->query($statement);
-	return $response;
+	
+	while ($row = $response->fetch_assoc())
+	{
+		$fname = $row["fname"];
+		$lname = $row["lname"];
+		$email = $row["email"];
+		echo "$username".PHP_EOL;
+	}
+	$result = array("fname"=>$fname,"lname"=>$lname,"email"=>$email);
+	return $result;
 }
 
 public function searchItem($search)
