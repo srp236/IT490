@@ -28,7 +28,9 @@
                 alert(text.message);
                 location.href = 'home.html';
                 sessionStorage.setItem('username',text.username);
+                sessionStorage.setItem('sessID',text.sessID);
                 console.log(sessionStorage.getItem('username'));
+                console.log(sessionStorage.getItem('sessID'));
             }
             else
             {

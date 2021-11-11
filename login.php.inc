@@ -29,12 +29,13 @@ public function validateLogin($username,$password)
 		if ($row["password"] == $pw)
 		{
 			echo "passwords match for $username".PHP_EOL;
-			$result = array("output"=>"1","message"=>"Login Success!","username"=>$un);
+			$sessID = $this->getSessID($un);
+			$result = array("output"=>"1","message"=>"Login Success!","username"=>$un,"sessID"=>$sessID);
 			return $result;
 		}
 		echo "passwords did not match for $username".PHP_EOL;
 	}
-	$result = array("output"=>"0","message"=>"Login Fail, Please try again","username"=>$un);
+	$result = array("output"=>"0","message"=>"Login Fail, Please try again");
 	return $result;//no users matched username
 }
 
@@ -121,8 +122,7 @@ public function getSessID($username)
 	{
 		$sessID = $row["sessID"];
 	}
-	$result = array("sessID"=>$sessID);
-	return $result;
+	return $sessID;
 }
 }
 ?>

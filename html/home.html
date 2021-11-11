@@ -16,11 +16,12 @@
   <script>
     console.log(sessionStorage.getItem('username'));
     username = sessionStorage.getItem('username');
+    sessID = sessionStorage.getItem('sessID');
   </script>
   <script src="https://kit.fontawesome.com/91a4f97be8.js" crossorigin="anonymous"></script>
   <script>
 
-    function HandleSessResponse(response)
+    function HandleCheckResponse(response)
     {
       var res = response;
       var text = JSON.parse(res);
@@ -28,7 +29,7 @@
       console.log(text.sessID);
     }
     
-    function SendSessRequest()
+    function SendCheckRequest()
     {
         var request = new XMLHttpRequest();
         
@@ -42,12 +43,12 @@
                 HandleSessResponse(this.responseText);
             }		
         }
-        request.send("type=getSess&username="+username);
+        request.send("type=validate_session&username="+username);
     }
 </script>
 </head>
 
-<body onload="SendSessRequest()">
+<body onload="SendCheckRequest()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-md navbar-light sticky-top shadow p-3 mb-5 bg-white rounde">
     <div class="container-fluid">

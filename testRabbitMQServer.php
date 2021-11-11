@@ -76,7 +76,7 @@ function requestProcessor($request)
     case "recipe":
       return doRecipe($request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
     case "validate_session":
-      return doValidate($request['sessionId']);
+      return doValidate($request['sessionId'],$request['username']);
     case "getSess":
       return doSessGet($request['username']);
   }
