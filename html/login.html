@@ -11,26 +11,18 @@
     <link rel="shortcut icon" href="../img/seedling-solid.svg"/>
     <!--Send user input to login.php to validate the user login and sessionID-->
     <script>
-    	sessionStorage.setItem('test','good');
-    	console.log(sessionStorage.getItem('test'));
-    </script>
-    <script>
-
         function HandleLoginResponse(response)
         {
             var res = response;
             var text = JSON.parse(res);
             console.log(text.username);
             
-
             if (text.output == "1")
             {
-                alert(text.message);
-                location.href = 'home.html';
                 sessionStorage.setItem('username',text.username);
                 sessionStorage.setItem('sessID',text.sessID);
-                console.log(sessionStorage.getItem('username'));
-                console.log(sessionStorage.getItem('sessID'));
+                alert(text.message);
+                location.href = 'home.html';
             }
             else
             {

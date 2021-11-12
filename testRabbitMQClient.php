@@ -19,6 +19,7 @@ $request['ptime'] = $_POST['ptime'];
 $request['ctime'] = $_POST['ctime'];
 $request['ingred'] = $_POST['ingred'];
 $request['instruc'] = $_POST['instruc'];
+$request['sessID'] = $_POST['sessID'];
 
 $response = $client->send_request($request);
 //$response = $client->publish($request);

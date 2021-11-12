@@ -64,7 +64,6 @@ public function getInfo($username)
 		$fname = $row["fname"];
 		$lname = $row["lname"];
 		$email = $row["email"];
-		echo "$username".PHP_EOL;
 	}
 	$result = array("fname"=>$fname,"lname"=>$lname,"email"=>$email);
 	return $result;
@@ -87,20 +86,21 @@ public function addRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
 	$response = $this->logindb->query($statement);
 
 	echo "data inputed".PHP_EOL;
-	$result = array("output"=>"Recipe Added");
+	$result = array("output"=>"1","message"=>"Recipe Added");
 	return $result;
 }
 
-public function validateSession($sessionID,$username)
-{
-    $sess = $this->logindb->real_escape_string($sessionID);
+public function validateSession($username,$sessID)
+{    
     $un = $this->logindb->real_escape_string($username);
-    $statement = "SELECT sessID FROM userSess where username = '$un'";
+    $sess = $this->logindb->real_escape_string($sessID);
+
+    $statement = "select * from userSess where username = '$un'";
     $response = $this->logindb->query($statement);
 	while ($row = $response->fetch_assoc())
 	{
 		echo "checking for session id".PHP_EOL;
-		if ($row[sessID] == $sess)
+		if ($row["sessID"] == $sess)
 		{
 			echo "session ID is valid".PHP_EOL;
 			$result = array("output"=>"1","message"=>"session ID is valid");
@@ -108,6 +108,8 @@ public function validateSession($sessionID,$username)
 		}
 		echo "invalid session ID".PHP_EOL;
 	}
+	$stat = "delete from userSess where username = '$un'";
+    	$respo = $this->logindb->query($stat);
 	$result = array("output"=>"0", "message"=>"Error: Session Timed Out. Please Login again.");
 	return $result;
 }
@@ -123,6 +125,15 @@ public function getSessID($username)
 		$sessID = $row["sessID"];
 	}
 	return $sessID;
+}
+public function removeSession($sessID)
+{
+	$sess = $this->logindb->real_escape_string($sessID);
+	$statement = "delete from userSess where sessID = '$sess'";
+	$response = $this->logindb->query($statement);
+	echo "sesson removed";
+	$result = array("output"=>"1","message"=>"Logout Complete.");
+	return $result;
 }
 }
 ?>

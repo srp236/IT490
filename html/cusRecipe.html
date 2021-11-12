@@ -13,16 +13,91 @@
     <!--Script-->  
     <script src="https://kit.fontawesome.com/91a4f97be8.js" crossorigin="anonymous"></script>
     <script>
+    username = sessionStorage.getItem('username');
+    sessionID = sessionStorage.getItem('sessID');
+  </script>
+  <script>
+  	window.onload = function(){
+  		SendCheckRequest();
+  	}
+  </script>
+  <script>
+    function HandleCheckResponse(response)
+    {
+      var res = response;
+      var text = JSON.parse(res);
+      
+      if (text.output == "1")
+      {
+	console.log(text.message);
+      }
+      else{
+        sessionStorage.removeItem('username');
+        sessionStorage.removeItem('sessID');
+      	alert(text.message);
+        location.href = 'login.html';
+      }
+    }
+    
+    function SendCheckRequest()
+    {
+        var request = new XMLHttpRequest();
+        
+        request.open("POST","../testRabbitMQClient.php",true);
+        request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        request.onreadystatechange = function ()
+        {
+            
+            if ((this.readyState == 4)&&(this.status == 200))
+            {
+                HandleCheckResponse(this.responseText);
+            }		
+        }
+        request.send("type=validate_session&username="+username+"&sessID="+sessionID);
+    }
+</script>
+<script>
+	function HandleLogoutResponse(response)
+	{
+	var res = response;
+	var text = JSON.parse(res);
+
+	if (text.output == "1")
+	{
+	sessionStorage.removeItem('username');
+	sessionStorage.removeItem('sessID');
+	alert(text.message);
+	location.href = 'login.html';
+	}
+	}
+	function SendLogoutRequest()
+	{
+	var request = new XMLHttpRequest();
+
+	request.open("POST","../testRabbitMQClient.php",true);
+	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	request.onreadystatechange = function ()
+	{
+	    
+	    if ((this.readyState == 4)&&(this.status == 200))
+	    {
+		HandleLogoutResponse(this.responseText);
+	    }		
+	}
+	request.send("type=logout&sessID="+sessionID);
+	}
+
+</script>
+    <script>
 
       function HandleLoginResponse(response)
       {
           var res = response;
-          var logGood = 'Recipe Added';
-          if (res == '1')
-          {
-            alert(logGood);            	
-            location.href = 'save.html';
-          }
+          if (text.output == "1")
+	  {
+	    alert(text.message);
+	    location.href = 'save.html';
+	  }
       }
       function SendRecipeRequest(image,dishname,ptime,ctime,ingred,instruc)
       {
@@ -78,8 +153,8 @@
             </li>
             <!--make this a button?-->
             <li class="nav-item active">
-              <a class="nav-link" href="#">Logout</a>
-            </li>
+             <a class="nav-link" onclick="SendLogoutRequest()">Logout</a>
+          </li>
           </ul>
         </div>
       </div>

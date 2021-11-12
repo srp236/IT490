@@ -39,20 +39,22 @@ function doRecipe($dishname,$ptime,$ctime,$ingred,$instruc)
   return $login->addRecipe($dishname,$ptime,$ctime,$ingred,$instruc);
 }
 /*******************************************/
-function doValidate($sessionID,$username)
+function doValidate($username,$sessID)
 {
   // lookup session ID in databse
   // check if it mastches with sessid in storage
   $login = new loginDB();
-  return $login->validateSession($sessionID,$username);
+  return $login->validateSession($username,$sessID);
   //return false if not valid
 }
 /*******************************************/
-
-function doSessGet($username)
+function doLogout($sessID)
 {
+  // lookup session ID in databse
+  // check if it mastches with sessid in storage
   $login = new loginDB();
-  return $login->getSessID($username);
+  return $login->removeSession($sessID);
+  //return false if not valid
 }
 /*******************************************/
 function requestProcessor($request)
@@ -76,9 +78,9 @@ function requestProcessor($request)
     case "recipe":
       return doRecipe($request['dishname'],$request['ptime'],$request['ctime'],$request['ingred'],$request['instruc']);
     case "validate_session":
-      return doValidate($request['sessionId'],$request['username']);
-    case "getSess":
-      return doSessGet($request['username']);
+      return doValidate($request['username'],$request['sessID']);
+    case "logout":
+    	return doLogout($request['sessID']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
